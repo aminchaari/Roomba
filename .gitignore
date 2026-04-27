@@ -1,0 +1,23 @@
+# ROS2 / colcon build artifacts
+build/
+install/
+log/
+**/build/
+**/install/
+**/log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*~
+
+# Docker
+.dockerignore
+.env.docker
+
+# IDEs
+.vscode/
+*.code-workspace

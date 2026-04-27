@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  roomba:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: roomba_coverage_planner:latest
+    container_name: roomba_simulation
+    
+    # Allow GUI access (X11)
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=0
+      - ROS_LOCALHOST_ONLY=0
+      - LIBGL_ALWAYS_INDIRECT=0
+    
+    # Volume mounts
+    volumes:
+      # X11 display socket for GUI
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${HOME}/.Xauthority:/root/.Xauthority:rw
+      
+      # Maps and data persistence
+      - ./maps:/root/roomba_ws/maps
+      
+      # Optional: mount source for development
+      # - ./src:/root/roomba_ws/src
+      
+      # Timezone
+      - /etc/localtime:/etc/localtime:ro
+    
+    # Network settings
+    network_mode: host
+    ipc: host
+    pid: host
+    
+    # GPU support (if available)
+    stdin_open: true
+    tty: true
+    
+    # Keep container running
+    command: bash
+    
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
