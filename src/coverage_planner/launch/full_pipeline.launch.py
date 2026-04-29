@@ -79,8 +79,8 @@ def generate_launch_description():
         description='Launch AMCL for localisation after map is saved'
     )
     step_size_arg = DeclareLaunchArgument(
-        'step_size', default_value='5',
-        description='Coverage sweep row spacing in grid cells'
+        'step_size', default_value='4',
+        description='Coverage sweep row spacing in grid cells (4 cells × 0.05m/cell = 0.20m spacing)'
     )
     coverage_algorithm_arg = DeclareLaunchArgument(
         'coverage_algorithm', default_value='grid',
