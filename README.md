@@ -109,10 +109,3 @@ ros2 topic pub -1 /start_coverage std_msgs/Bool "data: true"
 - `src/` — ROS2 workspace source packages
 - `maps/` — saved map files used by the workflow
 
-## 7. Add this to GitHub
-
-This file should be committed to your GitHub repository as `README.md` so new contributors can launch the simulation immediately.
-
----
-
-Happy simulating! 🚀
